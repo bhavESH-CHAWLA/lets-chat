@@ -1,5 +1,6 @@
 import express from "express";
 import "dotenv/config";
+import cors from "cors";
 import {connectDB} from "../lib/db.js";
 import { clerkMiddleware } from '@clerk/express'
 import fs from "fs";
@@ -10,7 +11,7 @@ const publicDir = path.join(process.cwd(),"public");
 
 const app = express();
 app.use(express.json());
-app.use(cors({origin:process.env.FRONTEND_URL,Credential:true}));
+app.use(cors({origin:process.env.FRONTEND_URL,credentials:true}));
 
 
 
