@@ -39,5 +39,7 @@ app.listen(process.env.PORT,()=>{
     connectDB();
 
     console.log("server is listening up on port "+process.env.PORT);
+    if(process.env.NODE_ENV==="production")job.start();
+    
 
 });
