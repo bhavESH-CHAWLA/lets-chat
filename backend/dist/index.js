@@ -2,6 +2,7 @@ import express from "express";
 import "dotenv/config";
 import cors from "cors";
 import {connectDB} from "../lib/db.js";
+import job from "../lib/cron.js";
 import { clerkMiddleware } from '@clerk/express'
 import fs from "fs";
 import path from "path";
@@ -39,5 +40,6 @@ app.listen(process.env.PORT,()=>{
     connectDB();
 
     console.log("server is listening up on port "+process.env.PORT);
+    if(process.env.NODE_ENV==="production")job.start();
 
 });
