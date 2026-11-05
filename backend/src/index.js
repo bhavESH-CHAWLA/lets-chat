@@ -6,7 +6,7 @@ import job from "../lib/cron.js";
 import { clerkMiddleware } from '@clerk/express'
 import fs from "fs";
 import path from "path";
-
+import clerkWebhook from "./webhooks/clerk.webhook.js";
 const publicDir = path.join(process.cwd(),"public");
 
 
