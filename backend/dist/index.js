@@ -6,7 +6,7 @@ import job from "../lib/cron.js";
 import { clerkMiddleware } from '@clerk/express'
 import fs from "fs";
 import path from "path";
-
+import clerkWebhook from "./webhooks/clerk.webhook.js";
 const publicDir = path.join(process.cwd(),"public");
 
 
@@ -14,6 +14,7 @@ const app = express();
 app.use(express.json());
 app.use(cors({origin:process.env.FRONTEND_URL,credentials:true}));
 
+app.use("/api/webhooks/clerk",express.raw({type:"application/json"}),clerkWebhook);
 
 
 app.use(clerkMiddleware());
