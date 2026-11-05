@@ -7,6 +7,9 @@ import { clerkMiddleware } from '@clerk/express'
 import fs from "fs";
 import path from "path";
 import clerkWebhook from "../webhooks/clerk.webhook.js";
+import authRoutes from "../routes/auth.route.js";
+
+
 const publicDir = path.join(process.cwd(),"public");
 
 
@@ -23,6 +26,8 @@ app.get("/health",(req,res)=>{
     res.status(200).json({ok:true});
 
 });
+
+app.use("/api/auth",authRoutes)
 
 // if the public directory exits then serve the static files
 // production bulid;
